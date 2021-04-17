@@ -74,7 +74,7 @@ public struct PTCGBattleItemCard: PTCGTrainerCard, PTCGBattleAvailable {
     
     public var resistanceEnergy: PTCGEnergy?
     
-    public var escapeEnergies: [PTCGEnergy]
+    public var retreatCost: [PTCGEnergy]
     
     public var evolutionType: PokemonEvolutionType
     

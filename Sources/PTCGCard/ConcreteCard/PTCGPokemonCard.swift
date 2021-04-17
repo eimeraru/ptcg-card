@@ -54,7 +54,7 @@ public struct PTCGPokemonCard: PTCGCard, PTCGBattleAvailable {
     /**
      * ポケモンが逃げるのに必要なエネルギー
      */
-    public var escapeEnergies: [PTCGEnergy]
+    public var retreatCost: [PTCGEnergy]
     
     /**
      * 進化状態を表す
@@ -76,7 +76,7 @@ extension PTCGPokemonCard: CustomDebugStringConvertible {
     public var debugDescription: String {
         let weakness = "(W): \(weaknessEnergy == nil ? "-" : weaknessEnergy!.emoji)"
         let resistance = "(R): \(resistanceEnergy == nil ? "-" : resistanceEnergy!.emoji)"
-        let escape = "(E): \(escapeEnergies.count)"
+        let escape = "(E): \(retreatCost.count)"
         let skillsDescription = ("\(descriptionAll(skills, indent: "    "))" as NSString).replacingOccurrences(of: "\\n", with: "\n")
         return """
 \(name) [\(maxHitPoint)] - \(type.emoji) | \(weakness), \(resistance), \(escape)

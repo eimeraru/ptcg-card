@@ -35,7 +35,7 @@ public protocol PTCGBattleAvailable {
     /**
      * ポケモンが逃げるのに必要なエネルギー
      */
-    var escapeEnergies: [PTCGEnergy] { get }
+    var retreatCost: [PTCGEnergy] { get }
     
     /**
      * 進化状態
