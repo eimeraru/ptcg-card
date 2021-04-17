@@ -20,7 +20,7 @@ private func descriptionAll(_ elements: Array<Any>, indent: String = "") -> Stri
 /**
  * ポケモンカード定義
  */
-public struct PTCGPokemonCard: PTCGCard {
+public struct PTCGPokemonCard: PTCGCard, PTCGBattleAvailable {
     
     // MARK: PTCGCard
     public var id: String
@@ -44,7 +44,7 @@ public struct PTCGPokemonCard: PTCGCard {
     /**
      * ポケモンの弱点
      */
-    public var weaknessEnergy: PTCGEnergy
+    public var weaknessEnergy: PTCGEnergy?
     
     /**
      * ポケモンの抵抗
@@ -69,7 +69,7 @@ public struct PTCGPokemonCard: PTCGCard {
 
 extension PTCGPokemonCard: CustomDebugStringConvertible {
     public var debugDescription: String {
-        let weakness = "(W): \(weaknessEnergy.emoji)"
+        let weakness = "(W): \(weaknessEnergy == nil ? "-" : weaknessEnergy!.emoji)"
         let resistance = "(R): \(resistanceEnergy == nil ? "-" : resistanceEnergy!.emoji)"
         let escape = "(E): \(escapeEnergies.count)"
         let skillsDescription = ("\(descriptionAll(skills, indent: "    "))" as NSString).replacingOccurrences(of: "\\n", with: "\n")
