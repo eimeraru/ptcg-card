@@ -8,6 +8,9 @@
 import Foundation
 import PTCGEnergy
 
+/**
+ * 準拠していれば対戦として場に出すことが可能
+ */
 public protocol PTCGBattleAvailable {
     /**
      * ポケモンのエネルギー種別
