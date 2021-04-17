@@ -8,8 +8,23 @@
 import Foundation
 import PTCGEnergy
 
+/**
+ * エネルギーカードの抽象化定義
+ * エネルギーカードは1個でも、複数のエネルギーになりえる場合(e.g. トリプル加速エネルギー)もあれば、
+ * 複数の種別としては扱えても1個のエネルギーとしか見なさない場合(e.g. レインボーエネルギー)もある
+ * そのため対応するエネルギー種別と、エネルギー数を表現している
+ */
 public protocol PTCGEnergyCard: PTCGCard {
+    /**
+     * エネルギー数
+     * エネルギーカードを付けて技を使う場合に、必要エネルギー数として計算する際に用いられる
+     */
     var capacity: Int { get set }
+
+    /**
+     * エネルギー種別
+     * エネルギーカードを付けて技を使う場合に、必要エネルギー種別として計算する際に用いられる
+     */
     var energies: Array<PTCGEnergy> { get set }
 }
 
@@ -18,6 +33,10 @@ public protocol PTCGEnergyCard: PTCGCard {
  */
 public struct PTCGBasicEnergyCard: PTCGEnergyCard {
 
+    /**
+     * 指定したエネルギーに合わせた基本エネルギーを生成
+     * - Parameter energy: エネルギー種別
+     */
     public init(at energy: PTCGEnergy) {
         self.energies = [energy]
     }
@@ -51,14 +70,10 @@ public struct PTCGBasicEnergyCard: PTCGEnergyCard {
 
 public struct PTCGSpecialEnergyCard: PTCGEnergyCard {
     public var id: String
-
     public var name: String
-    
     public var category: PTCGCardCategory {
         .specialEnergy
     }
-
     public var energies: [PTCGEnergy]
-    
     public var capacity: Int
 }

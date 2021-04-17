@@ -4,7 +4,8 @@ import XCTest
 final class PTCGEnergyCardTests: XCTestCase {
 
     func testBasicEnergyCard() {
-        let basicFireEnergyCard = PTCGBasicEnergyCard(at: .fire)
+        let basicFireEnergyCard = PTCGBasicEnergyCard.init(at: .fire)
+        XCTAssertEqual("basic-energy-fire", basicFireEnergyCard.id)
         XCTAssertEqual(.fire, basicFireEnergyCard.energies.first)
         XCTAssertEqual("基本炎エネルギー", basicFireEnergyCard.name)
         XCTAssertEqual(1, basicFireEnergyCard.capacity)
