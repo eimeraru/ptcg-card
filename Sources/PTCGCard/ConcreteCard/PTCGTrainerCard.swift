@@ -8,7 +8,9 @@
 import Foundation
 import PTCGEnergy
 
-public protocol PTCGTrainerCard: PTCGCard {}
+public protocol PTCGTrainerCard: PTCGCard {
+    var effect: String { get }
+}
 
 /**
  * ポケモンのどうぐ
@@ -21,6 +23,8 @@ public struct PTCGPokemonToolCard: PTCGTrainerCard {
     public var category: PTCGCardCategory {
         .pokemonTool
     }
+    
+    public var effect: String
 }
 
 /**
@@ -34,6 +38,8 @@ public struct PTCGSupporterCard: PTCGTrainerCard {
     public var category: PTCGCardCategory {
         .supporter
     }
+    
+    public var effect: String
 }
 
 /**
@@ -47,6 +53,8 @@ public struct PTCGItemCard: PTCGTrainerCard {
     public var category: PTCGCardCategory {
         .item
     }
+    
+    public var effect: String
 }
 
 /**
@@ -63,6 +71,8 @@ public struct PTCGBattleItemCard: PTCGTrainerCard, PTCGBattleAvailable {
     public var category: PTCGCardCategory {
         .item
     }
+    
+    public var effect: String
     
     // MARK: PTCGBattleAvailable
     
@@ -94,4 +104,6 @@ public struct PTCGStadiumCard: PTCGTrainerCard {
     public var category: PTCGCardCategory {
         .stadium
     }
+    
+    public var effect: String
 }
