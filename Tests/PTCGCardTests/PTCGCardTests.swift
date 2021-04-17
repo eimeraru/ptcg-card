@@ -1,15 +1,16 @@
 import XCTest
 @testable import PTCGCard
 
-final class PTCGCardTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(PTCGCard().text, "Hello, World!")
+final class PTCGEnergyCardTests: XCTestCase {
+
+    func testBasicEnergyCard() {
+        let basicFireEnergyCard = PTCGBasicEnergyCard(at: .fire)
+        XCTAssertEqual(.fire, basicFireEnergyCard.energies.first)
+        XCTAssertEqual("基本炎エネルギー", basicFireEnergyCard.name)
+        XCTAssertEqual(1, basicFireEnergyCard.capacity)
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testBasicEnergyCard", testBasicEnergyCard),
     ]
 }

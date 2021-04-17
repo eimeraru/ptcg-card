@@ -6,44 +6,59 @@
 //
 
 import Foundation
+import PTCGEnergy
 
 public protocol PTCGEnergyCard: PTCGCard {
-    var energies: Array<String> { get }
+    var capacity: Int { get set }
+    var energies: Array<PTCGEnergy> { get set }
 }
 
+/**
+ * 基本エネルギー
+ */
 public struct PTCGBasicEnergyCard: PTCGEnergyCard {
 
+    public init(at energy: PTCGEnergy) {
+        self.energies = [energy]
+    }
+    
+    // MARK:
+    
     public var id: String {
-        "basic-energy-xxx"
+        guard let energy = energies.first else {
+            fatalError("basic energy card is needed available one energy")
+        }
+        return "basic-energy-\(energy)"
     }
 
     public var name: String {
-        "基本\(energies)エネルギー"
-    }
-
-    public var energies: [String] {
-        ["無色"]
+        guard let energy = energies.first else {
+            fatalError("basic energy card is needed available one energy")
+        }
+        return "基本\(energy.name)エネルギー"
     }
 
     public var category: PTCGCardCategory {
         .basicEnergy
     }
+    
+    // MARK:
+    
+    public var energies: [PTCGEnergy]
+    
+    public var capacity: Int = 1
 }
 
 public struct PTCGSpecialEnergyCard: PTCGEnergyCard {
-    public var id: String {
-        "special-energy-xxx"
-    }
+    public var id: String
 
-    public var name: String {
-        "特殊エネルギー"
-    }
-
-    public var energies: [String] {
-        ["みず", "とう"]
-    }
-
+    public var name: String
+    
     public var category: PTCGCardCategory {
         .specialEnergy
     }
+
+    public var energies: [PTCGEnergy]
+    
+    public var capacity: Int
 }

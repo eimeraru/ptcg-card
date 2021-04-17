@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "PTCGEnergy",
+        "repositoryURL": "https://github.com/evdwarf/ptcg-energy.git",
+        "state": {
+          "branch": null,
+          "revision": "ad752c15713ea0ad2f1bc63695ff1b3cc396657d",
+          "version": "0.0.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
