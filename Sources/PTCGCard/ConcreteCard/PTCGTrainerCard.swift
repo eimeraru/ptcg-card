@@ -76,6 +76,8 @@ public struct PTCGBattleItemCard: PTCGTrainerCard, PTCGBattleAvailable {
     
     public var escapeEnergies: [PTCGEnergy]
     
+    public var evolutionType: PokemonEvolutionType
+    
     public var ability: PokemonAbility?
     
     public var skills: [PokemonSkill]

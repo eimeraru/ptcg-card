@@ -38,6 +38,11 @@ public protocol PTCGBattleAvailable {
     var escapeEnergies: [PTCGEnergy] { get }
     
     /**
+     * 進化状態
+     */
+    var evolutionType: PokemonEvolutionType { get }
+    
+    /**
      * 特性
      */
     var ability: PokemonAbility? { get }
@@ -46,4 +51,78 @@ public protocol PTCGBattleAvailable {
      * 技
      */
     var skills: [PokemonSkill] { get }
+}
+
+/**
+ * ポケモンの進化状態
+ */
+public enum PokemonEvolutionType {
+    /**
+     * たねポケモン
+     */
+    case basic
+    /**
+     * 進化1ポケモン
+     */
+    case stage1
+    /**
+     * 進化2ポケモン
+     */
+    case stage2
+}
+
+/**
+ * ポケモンの特性
+ */
+public struct PokemonAbility {
+    /**
+     * ポケモンの特性名
+     */
+    public let name: String
+    
+    /**
+     * 特性の効果
+     */
+    public let effect: String
+}
+
+extension PokemonAbility: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        return "[Ability]: \(name)\n    \(effect)"
+    }
+}
+
+/**
+ * ポケモンの技
+ */
+public struct PokemonSkill {
+    
+    /**
+     * 技に必要なエネルギー
+     */
+    public var needEnergies: [PTCGEnergy]
+
+    /**
+     * 技名
+     */
+    public var name: String
+    
+    /**
+     * 技によって与えるダメージ
+     */
+    public var damagePoint: String?
+
+    /**
+     * 効果
+     */
+    public var effect: String?
+}
+
+extension PokemonSkill: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        let energiesLogo: String = needEnergies.reduce("") { (ret, energy) -> String in
+            ret + energy.emoji
+        }
+        return "\(energiesLogo) \(name) \(damagePoint ?? "")\n    \(effect ?? "")\n"
+    }
 }
