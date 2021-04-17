@@ -19,61 +19,61 @@ public protocol PTCGEnergyCard: PTCGCard {
      * エネルギー数
      * エネルギーカードを付けて技を使う場合に、必要エネルギー数として計算する際に用いられる
      */
-    var capacity: Int { get set }
+    var capacity: Int { get }
 
     /**
      * エネルギー種別
      * エネルギーカードを付けて技を使う場合に、必要エネルギー種別として計算する際に用いられる
      */
-    var energies: Array<PTCGEnergy> { get set }
+    var energies: Array<PTCGEnergy> { get }
 }
 
 /**
  * 基本エネルギー
  */
 public struct PTCGBasicEnergyCard: PTCGEnergyCard {
-
+    
     /**
      * 指定したエネルギーに合わせた基本エネルギーを生成
      * - Parameter energy: エネルギー種別
      */
     public init(at energy: PTCGEnergy) {
-        self.energies = [energy]
+        self.basicEnergy = energy
     }
     
-    // MARK:
+    var basicEnergy: PTCGEnergy
+    
+    // MARK: PTCGCard
     
     public var id: String {
-        guard let energy = energies.first else {
-            fatalError("basic energy card is needed available one energy")
-        }
-        return "basic-energy-\(energy)"
+        return "basic-energy-\(basicEnergy)"
     }
 
     public var name: String {
-        guard let energy = energies.first else {
-            fatalError("basic energy card is needed available one energy")
-        }
-        return "基本\(energy.name)エネルギー"
+        return "基本\(basicEnergy.name)エネルギー"
     }
 
     public var category: PTCGCardCategory {
         .basicEnergy
     }
     
-    // MARK:
+    // MARK: PTCGEnergyCard
     
-    public var energies: [PTCGEnergy]
+    public var energies: [PTCGEnergy] {
+        [basicEnergy]
+    }
     
-    public var capacity: Int = 1
+    public var capacity: Int { 1 }
 }
 
 public struct PTCGSpecialEnergyCard: PTCGEnergyCard {
+    // MARK: PTCGCard
     public var id: String
     public var name: String
     public var category: PTCGCardCategory {
         .specialEnergy
     }
+    // MARK: PTCGEnergyCard
     public var energies: [PTCGEnergy]
     public var capacity: Int
 }
