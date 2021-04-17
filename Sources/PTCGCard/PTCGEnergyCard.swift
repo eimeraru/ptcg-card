@@ -7,43 +7,43 @@
 
 import Foundation
 
-protocol PTCGEnergyCard: PTCGCard {
+public protocol PTCGEnergyCard: PTCGCard {
     var energies: Array<String> { get }
 }
 
-struct PTCGBasicEnergyCard: PTCGEnergyCard {
+public struct PTCGBasicEnergyCard: PTCGEnergyCard {
 
-    var id: String {
+    public var id: String {
         "basic-energy-xxx"
     }
 
-    var name: String {
+    public var name: String {
         "基本\(energies)エネルギー"
     }
 
-    var energies: [String] {
+    public var energies: [String] {
         ["無色"]
     }
 
-    var category: PTCGCardCategory {
+    public var category: PTCGCardCategory {
         .basicEnergy
     }
 }
 
-struct PTCGSpecialEnergyCard: PTCGEnergyCard {
-    var id: String {
+public struct PTCGSpecialEnergyCard: PTCGEnergyCard {
+    public var id: String {
         "special-energy-xxx"
     }
 
-    var name: String {
+    public var name: String {
         "特殊エネルギー"
     }
 
-    var energies: [String] {
+    public var energies: [String] {
         ["みず", "とう"]
     }
 
-    var category: PTCGCardCategory {
+    public var category: PTCGCardCategory {
         .specialEnergy
     }
 }
