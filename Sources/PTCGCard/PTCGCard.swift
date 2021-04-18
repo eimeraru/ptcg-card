@@ -28,7 +28,7 @@ public extension PTCGCard where Self: CustomDebugStringConvertible {
 
 extension PTCGCard where Self: Equatable {
 
-    static func ==(lhs: Self, rhs: Self) -> Bool {
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id
     }
 }

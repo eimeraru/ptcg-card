@@ -14,7 +14,7 @@ import PTCGEnergy
  * 複数の種別としては扱えても1個のエネルギーとしか見なさない場合(e.g. レインボーエネルギー)もある
  * そのため対応するエネルギー種別と、エネルギー数を表現している
  */
-public protocol PTCGEnergyCard: PTCGCard, Equatable {
+public protocol PTCGEnergyCard: PTCGCard {
     /**
      * エネルギー数
      * エネルギーカードを付けて技を使う場合に、必要エネルギー数として計算する際に用いられる
@@ -26,6 +26,48 @@ public protocol PTCGEnergyCard: PTCGCard, Equatable {
      * エネルギーカードを付けて技を使う場合に、必要エネルギー種別として計算する際に用いられる
      */
     var energies: Array<PTCGEnergy> { get }
+}
+
+public struct AnyPTCGEnergyCard: PTCGEnergyCard {
+    
+    public var capacity: Int {
+        base.capacity
+    }
+    
+    public var energies: Array<PTCGEnergy> {
+        base.energies
+    }
+    
+    public var id: String {
+        base.id
+    }
+    
+    public var name: String {
+        base.name
+    }
+    
+    public var category: PTCGCardCategory {
+        base.category
+    }
+    
+    // MARK: Initialize
+    
+    var base: PTCGEnergyCard
+    
+    public init(_ energyCard: PTCGEnergyCard) {
+        self.base = energyCard
+    }
+}
+
+extension AnyPTCGEnergyCard: Equatable {
+
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.capacity == rhs.capacity
+            && lhs.category == rhs.category
+            && lhs.energies == rhs.energies
+    }
 }
 
 /**
