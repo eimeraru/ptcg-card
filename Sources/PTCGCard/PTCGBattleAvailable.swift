@@ -75,6 +75,19 @@ public enum PokemonEvolutionType {
  * ポケモンの特性
  */
 public struct PokemonAbility {
+    
+    // MARK: Initialize
+    
+    public init(
+        name: String,
+        effect: String)
+    {
+        self.name = name
+        self.effect = effect
+    }
+    
+    // MARK:
+    
     /**
      * ポケモンの特性名
      */
@@ -97,15 +110,31 @@ extension PokemonAbility: CustomDebugStringConvertible {
  */
 public struct PokemonSkill {
     
-    /**
-     * 技に必要なエネルギー
-     */
-    public var needEnergies: [PTCGEnergy]
-
+    // MARK: Initialize
+    
+    public init(
+        name: String,
+        needEnergies: Array<PTCGEnergy>,
+        damagePoint: String? = nil,
+        effect: String? = nil)
+    {
+        self.name = name
+        self.needEnergies = needEnergies
+        self.damagePoint = damagePoint
+        self.effect = effect
+    }
+    
+    // MARK:
+    
     /**
      * 技名
      */
     public var name: String
+    
+    /**
+     * 技に必要なエネルギー
+     */
+    public var needEnergies: Array<PTCGEnergy>
     
     /**
      * 技によって与えるダメージ
