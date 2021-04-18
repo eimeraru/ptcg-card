@@ -99,6 +99,13 @@ public struct PokemonAbility {
     public let effect: String
 }
 
+extension PokemonAbility: Equatable {
+    
+    public static func ==(lhs: PokemonAbility, rhs: PokemonAbility) -> Bool {
+        lhs.name == rhs.name && lhs.effect == rhs.effect
+    }
+}
+
 extension PokemonAbility: CustomDebugStringConvertible {
     public var debugDescription: String {
         return "[Ability]: \(name)\n    \(effect)"
@@ -145,6 +152,16 @@ public struct PokemonSkill {
      * 効果
      */
     public var effect: String?
+}
+
+extension PokemonSkill: Equatable {
+    
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        lhs.name == rhs.name
+            && lhs.needEnergies == rhs.needEnergies
+            && lhs.damagePoint == rhs.damagePoint
+            && lhs.effect == rhs.effect
+    }
 }
 
 extension PokemonSkill: CustomDebugStringConvertible {

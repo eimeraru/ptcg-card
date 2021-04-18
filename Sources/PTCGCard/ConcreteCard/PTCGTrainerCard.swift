@@ -38,6 +38,16 @@ public struct PTCGPokemonToolCard: PTCGTrainerCard {
     public var effect: String
 }
 
+extension PTCGPokemonToolCard: Equatable {
+
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.category == rhs.category
+            && lhs.effect == rhs.effect
+    }
+}
+
 /**
  * サポート
  */
@@ -64,6 +74,16 @@ public struct PTCGSupporterCard: PTCGTrainerCard {
     public var effect: String
 }
 
+extension PTCGSupporterCard: Equatable {
+
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.category == rhs.category
+            && lhs.effect == rhs.effect
+    }
+}
+
 /**
  * グッズ
  */
@@ -88,6 +108,16 @@ public struct PTCGItemCard: PTCGTrainerCard {
     }
     
     public var effect: String
+}
+
+extension PTCGItemCard: Equatable {
+
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.category == rhs.category
+            && lhs.effect == rhs.effect
+    }
 }
 
 /**
@@ -154,6 +184,25 @@ public struct PTCGBattleItemCard: PTCGTrainerCard, PTCGBattleAvailable {
     public var skills: Array<PokemonSkill>
 }
 
+extension PTCGBattleItemCard: Equatable {
+
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.category == rhs.category
+            && lhs.evolutionType == rhs.evolutionType
+            && lhs.effect == rhs.effect
+            && lhs.type == rhs.type
+            && lhs.maxHitPoint == rhs.maxHitPoint
+            && lhs.weaknessEnergy == rhs.weaknessEnergy
+            && lhs.resistanceEnergy == rhs.resistanceEnergy
+            && lhs.retreatCost ==  rhs.retreatCost
+            && lhs.evolutionType == rhs.evolutionType
+            && lhs.ability == rhs.ability
+            && lhs.skills == rhs.skills
+    }
+}
+
 /**
  * スタジアム
  */
@@ -178,4 +227,14 @@ public struct PTCGStadiumCard: PTCGTrainerCard {
     }
     
     public var effect: String
+}
+
+extension PTCGStadiumCard: Equatable {
+
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.category == rhs.category
+            && lhs.effect == rhs.effect
+    }
 }
