@@ -35,6 +35,14 @@ extension PTCGCard where Self: Equatable {
 
 public struct AnyPTCGCard: PTCGCard {
     
+    // MARK: Initialize
+    
+    public init(_ card: PTCGCard) {
+        self.card = card
+    }
+    
+    // MARK:
+    
     public var card: PTCGCard
     
     public var id: String {
@@ -61,5 +69,8 @@ extension AnyPTCGCard: Equatable {
 
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.category == rhs.category
+            && lhs.debugDescription == rhs.debugDescription
     }
 }
