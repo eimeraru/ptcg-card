@@ -20,8 +20,8 @@ final class PTCGTrainerCardTests: XCTestCase {
         maxHitPoint: 30,
         weaknessEnergy: nil,
         resistanceEnergy: nil,
-        retreatCost: [],
         evolutionType: .basic,
+        retreatCost: [],
         ability: nil,
         skills: [])
     

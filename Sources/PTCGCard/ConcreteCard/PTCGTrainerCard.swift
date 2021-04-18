@@ -16,6 +16,17 @@ public protocol PTCGTrainerCard: PTCGCard {
  * ポケモンのどうぐ
  */
 public struct PTCGPokemonToolCard: PTCGTrainerCard {
+    
+    // MARK: Initialize
+    
+    public init(id: String, name: String, effect: String) {
+        self.id = id
+        self.name = name
+        self.effect = effect
+    }
+    
+    // MARK: PTCGCard
+    
     public var id: String
     
     public var name: String
@@ -31,6 +42,17 @@ public struct PTCGPokemonToolCard: PTCGTrainerCard {
  * サポート
  */
 public struct PTCGSupporterCard: PTCGTrainerCard {
+    
+    // MARK: Initialize
+    
+    public init(id: String, name: String, effect: String) {
+        self.id = id
+        self.name = name
+        self.effect = effect
+    }
+    
+    // MARK: PTCGCard
+    
     public var id: String
     
     public var name: String
@@ -46,6 +68,17 @@ public struct PTCGSupporterCard: PTCGTrainerCard {
  * グッズ
  */
 public struct PTCGItemCard: PTCGTrainerCard {
+    
+    // MARK: Initialize
+    
+    public init(id: String, name: String, effect: String) {
+        self.id = id
+        self.name = name
+        self.effect = effect
+    }
+    
+    // MARK: PTCGCard
+    
     public var id: String
     
     public var name: String
@@ -61,6 +94,34 @@ public struct PTCGItemCard: PTCGTrainerCard {
  * バトル場、またはベンチに出すことができるグッズ
  */
 public struct PTCGBattleItemCard: PTCGTrainerCard, PTCGBattleAvailable {
+    
+    // MARK: Initialize
+    
+    public init (
+        id: String,
+        name: String,
+        effect: String,
+        type: PTCGEnergy,
+        maxHitPoint: Int,
+        weaknessEnergy: PTCGEnergy? = nil,
+        resistanceEnergy: PTCGEnergy? = nil,
+        evolutionType: PokemonEvolutionType,
+        retreatCost: Array<PTCGEnergy> = [],
+        ability: PokemonAbility? = nil,
+        skills: Array<PokemonSkill> = []
+    ) {
+        self.id = id
+        self.name = name
+        self.effect = effect
+        self.type = type
+        self.maxHitPoint = maxHitPoint
+        self.weaknessEnergy = weaknessEnergy
+        self.resistanceEnergy = resistanceEnergy
+        self.retreatCost = retreatCost
+        self.evolutionType = evolutionType
+        self.ability = ability
+        self.skills = skills
+    }
     
     // MARK: PTCGCard
     
@@ -84,19 +145,30 @@ public struct PTCGBattleItemCard: PTCGTrainerCard, PTCGBattleAvailable {
     
     public var resistanceEnergy: PTCGEnergy?
     
-    public var retreatCost: [PTCGEnergy]
+    public var retreatCost: Array<PTCGEnergy>
     
     public var evolutionType: PokemonEvolutionType
     
     public var ability: PokemonAbility?
     
-    public var skills: [PokemonSkill]
+    public var skills: Array<PokemonSkill>
 }
 
 /**
  * スタジアム
  */
 public struct PTCGStadiumCard: PTCGTrainerCard {
+    
+    // MARK: Initialize
+    
+    public init(id: String, name: String, effect: String) {
+        self.id = id
+        self.name = name
+        self.effect = effect
+    }
+    
+    // MARK: PTCGCard
+    
     public var id: String
     
     public var name: String

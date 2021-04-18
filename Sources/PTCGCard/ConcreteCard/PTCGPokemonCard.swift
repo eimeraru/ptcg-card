@@ -22,7 +22,34 @@ private func descriptionAll(_ elements: Array<Any>, indent: String = "") -> Stri
  */
 public struct PTCGPokemonCard: PTCGCard, PTCGBattleAvailable {
     
+    // MARK: Initialize
+    
+    public init(
+        id: String,
+        name: String,
+        type: PTCGEnergy,
+        maxHitPoint: Int,
+        weaknessEnergy: PTCGEnergy? = nil,
+        resistanceEnergy: PTCGEnergy? = nil,
+        retreatCost: Array<PTCGEnergy> = [],
+        evolutionType: PokemonEvolutionType,
+        ability: PokemonAbility?,
+        skills: Array<PokemonSkill> = [])
+    {
+        self.id = id
+        self.name = name
+        self.type = type
+        self.maxHitPoint = maxHitPoint
+        self.weaknessEnergy = weaknessEnergy
+        self.resistanceEnergy = resistanceEnergy
+        self.retreatCost = retreatCost
+        self.evolutionType = evolutionType
+        self.ability = ability
+        self.skills = skills
+    }
+    
     // MARK: PTCGCard
+    
     public var id: String
     public var name: String
     public var category: PTCGCardCategory {
@@ -54,7 +81,7 @@ public struct PTCGPokemonCard: PTCGCard, PTCGBattleAvailable {
     /**
      * ポケモンが逃げるのに必要なエネルギー
      */
-    public var retreatCost: [PTCGEnergy]
+    public var retreatCost: Array<PTCGEnergy>
     
     /**
      * 進化状態を表す
@@ -69,7 +96,7 @@ public struct PTCGPokemonCard: PTCGCard, PTCGBattleAvailable {
     /**
      * 技
      */
-    public var skills: [PokemonSkill]
+    public var skills: Array<PokemonSkill>
 }
 
 extension PTCGPokemonCard: CustomDebugStringConvertible {
