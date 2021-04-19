@@ -49,45 +49,49 @@ extension PTCGCard where Self: Equatable {
     }
 }
 
-//
-//public struct AnyPTCGCard: PTCGCard {
-//
-//    // MARK: Initialize
-//
-//    public init(_ card: PTCGCard) {
-//        self.card = card
-//    }
-//
-//    // MARK:
-//
-//    public var card: PTCGCard
-//
-//    public var id: String {
-//        card.id
-//    }
-//
-//    public var name: String {
-//        card.name
-//    }
-//
-//    public var category: PTCGCardCategory {
-//        card.category
-//    }
-//}
-//
-//extension AnyPTCGCard: CustomDebugStringConvertible {
-//
-//    public var debugDescription: String {
-//        return "\(self.card)"
-//    }
-//}
-//
-//extension AnyPTCGCard: Equatable {
-//
-//    public static func ==(lhs: Self, rhs: Self) -> Bool {
-//        lhs.id == rhs.id
-//            && lhs.name == rhs.name
-//            && lhs.category == rhs.category
-//            && lhs.debugDescription == rhs.debugDescription
-//    }
-//}
+
+public struct AnyPTCGCard: PTCGCard {
+
+    // MARK: Initialize
+
+    public init(_ card: PTCGCard) {
+        self.card = card
+    }
+
+    // MARK:
+
+    public var card: PTCGCard
+
+    public var id: String {
+        card.id
+    }
+
+    public var name: String {
+        card.name
+    }
+
+    public var category: PTCGCardCategory {
+        card.category
+    }
+    
+    public var switcher: PTCGCardSwitcher? {
+        card.switcher
+    }
+}
+
+extension AnyPTCGCard: CustomDebugStringConvertible {
+
+    public var debugDescription: String {
+        return "\(self.card)"
+    }
+}
+
+extension AnyPTCGCard: Equatable {
+
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.category == rhs.category
+            && lhs.debugDescription == rhs.debugDescription
+    }
+}
