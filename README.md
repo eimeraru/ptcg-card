@@ -1,6 +1,6 @@
 # PTCG Card
 
-![](ptcg-card.png)
+![](ptcg-card-icon.png)
 
 ## Requirements
 
