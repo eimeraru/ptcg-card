@@ -28,47 +28,51 @@ public protocol PTCGEnergyCard: PTCGCard {
     var energies: Array<PTCGEnergy> { get }
 }
 
-public struct AnyPTCGEnergyCard: PTCGEnergyCard {
-    
-    public var capacity: Int {
-        base.capacity
-    }
-    
-    public var energies: Array<PTCGEnergy> {
-        base.energies
-    }
-    
-    public var id: String {
-        base.id
-    }
-    
-    public var name: String {
-        base.name
-    }
-    
-    public var category: PTCGCardCategory {
-        base.category
-    }
-    
-    // MARK: Initialize
-    
-    var base: PTCGEnergyCard
-    
-    public init(_ energyCard: PTCGEnergyCard) {
-        self.base = energyCard
-    }
-}
-
-extension AnyPTCGEnergyCard: Equatable {
-
-    public static func ==(lhs: Self, rhs: Self) -> Bool {
-        lhs.id == rhs.id
-            && lhs.name == rhs.name
-            && lhs.capacity == rhs.capacity
-            && lhs.category == rhs.category
-            && lhs.energies == rhs.energies
-    }
-}
+//public struct AnyPTCGEnergyCard: PTCGEnergyCard {
+//
+//    public var capacity: Int {
+//        base.capacity
+//    }
+//
+//    public var energies: Array<PTCGEnergy> {
+//        base.energies
+//    }
+//
+//    public var id: String {
+//        base.id
+//    }
+//
+//    public var name: String {
+//        base.name
+//    }
+//
+//    public var category: PTCGCardCategory {
+//        base.category
+//    }
+//
+//    public var switcher: PTCGCardSwitcher? {
+//        base.switcher
+//    }
+//
+//    // MARK: Initialize
+//
+//    var base: PTCGEnergyCard
+//
+//    public init(_ energyCard: PTCGEnergyCard) {
+//        self.base = energyCard
+//    }
+//}
+//
+//extension AnyPTCGEnergyCard: Equatable {
+//
+//    public static func ==(lhs: Self, rhs: Self) -> Bool {
+//        lhs.id == rhs.id
+//            && lhs.name == rhs.name
+//            && lhs.capacity == rhs.capacity
+//            && lhs.category == rhs.category
+//            && lhs.energies == rhs.energies
+//    }
+//}
 
 /**
  * 基本エネルギー
@@ -99,6 +103,10 @@ public struct PTCGBasicEnergyCard: PTCGEnergyCard {
         .basicEnergy
     }
     
+    public var switcher: PTCGCardSwitcher? {
+        .basicEnergy(self)
+    }
+    
     // MARK: PTCGEnergyCard
     
     public var energies: [PTCGEnergy] {
@@ -125,6 +133,9 @@ public struct PTCGSpecialEnergyCard: PTCGEnergyCard {
     public var name: String
     public var category: PTCGCardCategory {
         .specialEnergy
+    }
+    public var switcher: PTCGCardSwitcher? {
+        .specialEnergy(self)
     }
     // MARK: PTCGEnergyCard
     public var energies: [PTCGEnergy]

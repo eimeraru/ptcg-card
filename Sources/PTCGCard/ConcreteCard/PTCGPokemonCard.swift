@@ -56,6 +56,10 @@ public struct PTCGPokemonCard: PTCGCard, PTCGBattleAvailable {
         .pokemon
     }
     
+    public var switcher: PTCGCardSwitcher? {
+        .pokemon(self)
+    }
+    
     // MARK: PTCGPokemonCard
     
     /**

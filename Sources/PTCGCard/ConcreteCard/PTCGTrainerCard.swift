@@ -35,6 +35,10 @@ public struct PTCGPokemonToolCard: PTCGTrainerCard {
         .pokemonTool
     }
     
+    public var switcher: PTCGCardSwitcher? {
+        .pokemonTool(self)
+    }
+    
     public var effect: String
 }
 
@@ -71,6 +75,10 @@ public struct PTCGSupporterCard: PTCGTrainerCard {
         .supporter
     }
     
+    public var switcher: PTCGCardSwitcher? {
+        .supporter(self)
+    }
+    
     public var effect: String
 }
 
@@ -105,6 +113,10 @@ public struct PTCGItemCard: PTCGTrainerCard {
     
     public var category: PTCGCardCategory {
         .item
+    }
+    
+    public var switcher: PTCGCardSwitcher? {
+        .item(self)
     }
     
     public var effect: String
@@ -161,6 +173,10 @@ public struct PTCGBattleItemCard: PTCGTrainerCard, PTCGBattleAvailable {
     
     public var category: PTCGCardCategory {
         .item
+    }
+    
+    public var switcher: PTCGCardSwitcher? {
+        .battleItem(self)
     }
     
     public var effect: String
@@ -224,6 +240,10 @@ public struct PTCGStadiumCard: PTCGTrainerCard {
     
     public var category: PTCGCardCategory {
         .stadium
+    }
+    
+    public var switcher: PTCGCardSwitcher? {
+        .stadium(self)
     }
     
     public var effect: String
