@@ -28,51 +28,51 @@ public protocol PTCGEnergyCard: PTCGCard {
     var energies: Array<PTCGEnergy> { get }
 }
 
-//public struct AnyPTCGEnergyCard: PTCGEnergyCard {
-//
-//    public var capacity: Int {
-//        base.capacity
-//    }
-//
-//    public var energies: Array<PTCGEnergy> {
-//        base.energies
-//    }
-//
-//    public var id: String {
-//        base.id
-//    }
-//
-//    public var name: String {
-//        base.name
-//    }
-//
-//    public var category: PTCGCardCategory {
-//        base.category
-//    }
-//
-//    public var switcher: PTCGCardSwitcher? {
-//        base.switcher
-//    }
-//
-//    // MARK: Initialize
-//
-//    var base: PTCGEnergyCard
-//
-//    public init(_ energyCard: PTCGEnergyCard) {
-//        self.base = energyCard
-//    }
-//}
-//
-//extension AnyPTCGEnergyCard: Equatable {
-//
-//    public static func ==(lhs: Self, rhs: Self) -> Bool {
-//        lhs.id == rhs.id
-//            && lhs.name == rhs.name
-//            && lhs.capacity == rhs.capacity
-//            && lhs.category == rhs.category
-//            && lhs.energies == rhs.energies
-//    }
-//}
+public struct AnyPTCGEnergyCard: PTCGEnergyCard {
+
+    public var capacity: Int {
+        base.capacity
+    }
+
+    public var energies: Array<PTCGEnergy> {
+        base.energies
+    }
+
+    public var id: String {
+        base.id
+    }
+
+    public var name: String {
+        base.name
+    }
+
+    public var category: PTCGCardCategory {
+        base.category
+    }
+
+    public var switcher: PTCGCardSwitcher? {
+        base.switcher
+    }
+
+    // MARK: Initialize
+
+    var base: PTCGEnergyCard
+
+    public init(_ energyCard: PTCGEnergyCard) {
+        self.base = energyCard
+    }
+}
+
+extension AnyPTCGEnergyCard: Equatable {
+
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.capacity == rhs.capacity
+            && lhs.category == rhs.category
+            && lhs.energies == rhs.energies
+    }
+}
 
 /**
  * 基本エネルギー
@@ -128,6 +128,21 @@ extension PTCGBasicEnergyCard: Equatable {
 }
 
 public struct PTCGSpecialEnergyCard: PTCGEnergyCard {
+
+    /**
+     * 特殊エネルギー
+     * - Parameter id: カードID
+     * - Parameter name: カード名
+     * - Parameter energies: 対応エネルギー種別
+     * - Parameter capacity: 単体でエネルギー何個分になるかを示す数量
+     */
+    public init(id: String, name: String, energies: [PTCGEnergy], capacity: Int) {
+        self.id = id
+        self.name = name
+        self.energies = energies
+        self.capacity = capacity
+    }
+    
     // MARK: PTCGCard
     public var id: String
     public var name: String
